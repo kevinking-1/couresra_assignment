@@ -52,10 +52,11 @@ X = data2[:,0:2]
 
 plotData(data2, 'Microchip Test 1', 'Microchip Test 2', 'y = 1', 'y = 0')
 
+# plt.show()
+
 # Note that this function inserts a column with 'ones' in the design matrix for the intercept.
 poly = PolynomialFeatures(6)
 XX = poly.fit_transform(data2[:,0:2])
-
 
 def costFunctionReg(theta, reg, *args):
     m = y.size
@@ -111,3 +112,4 @@ for i, C in enumerate([0, 1, 100]):
     h = h.reshape(xx1.shape)
     axes.flatten()[i].contour(xx1, xx2, h, [0.5], linewidths=1, colors='g');
     axes.flatten()[i].set_title('Train accuracy {}% with Lambda = {}'.format(np.round(accuracy, decimals=2), C))
+plt.show()
